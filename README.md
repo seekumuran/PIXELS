@@ -1,4 +1,4 @@
-# Pixels
+# PIXELS
 
 **A discrete graphics-processing system built from 7400-series TTL logic, custom VRAM addressing, and VGA timing, targeting stable output on a physical monitor.**
 
