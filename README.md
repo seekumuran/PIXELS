@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LastMile
 ## Real-Time Geospatial Logistics & Intelligent Route Optimization Platform
 
@@ -141,3 +142,6 @@ this work. The original MIT `LICENSE` is retained; see
 [UPSTREAM_ATTRIBUTION.md](UPSTREAM_ATTRIBUTION.md) for attribution notes.
 Add the verified upstream repository URL before public release. OpenStreetMap
 data attribution is required when displaying or redistributing OSM-derived data.
+=======
+
+>>>>>>> 9aa8e51d6de308ba2a95f80dc0967963caa63abd
