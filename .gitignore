@@ -1,0 +1,41 @@
+# R session / project files
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Generated pipeline artifacts (recreate with run_pipeline.R)
+*.rds
+*.RDS
+*.sqlite
+*.db
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# R package/build artifacts
+.Rcheck/
+*.tar.gz
+renv/library/
+
+# Generated experiment outputs (commit selected final CSVs only if desired)
+experiments/results/*.csv
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

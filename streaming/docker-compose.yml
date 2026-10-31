@@ -1,0 +1,44 @@
+# docker-compose.yml
+#
+# Spins up the two pieces of infrastructure the optional streaming layer
+# needs: a Kafka-compatible broker (Redpanda — same wire protocol as Kafka,
+# far lighter to run on a laptop) and a Postgres database that the R/Shiny
+# app reads from as its "subscriber."
+#
+# Usage:
+#   cd streaming
+#   docker compose up -d
+#
+# This does NOT touch the core R project at all — it's purely additive.
+
+version: "3.8"
+
+services:
+  redpanda:
+    image: redpandadata/redpanda:v24.1.1
+    container_name: dynaroute-redpanda
+    command:
+      - redpanda
+      - start
+      - --smp=1
+      - --memory=512M
+      - --overprovisioned
+      - --node-id=0
+      - --check=false
+      - --kafka-addr=PLAINTEXT://0.0.0.0:9092
+      - --advertise-kafka-addr=PLAINTEXT://localhost:9092
+    ports:
+      - "9092:9092"
+      - "9644:9644"   # admin/metrics API
+
+  postgres:
+    image: postgres:16
+    container_name: dynaroute-postgres
+    environment:
+      POSTGRES_USER: dynaroute
+      POSTGRES_PASSWORD: dynaroute
+      POSTGRES_DB: dynaroute
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
